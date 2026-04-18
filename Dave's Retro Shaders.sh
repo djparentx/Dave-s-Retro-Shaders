@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # =======================================
-# Dave's Retro Shaders v1.2
+# Dave's Retro Shaders v1.3
 # by djparent
 # =======================================
 
@@ -36,6 +36,7 @@ fi
 # Initialization
 # ============================================================
 export TERM=linux
+GPTOKEYB_PID=""
 CURR_TTY="/dev/tty1"
 TMP_KEYS="/tmp/keys.gptk.$$"
 SHADERPATH="/home/ark/.config/retroarch/shaders"
@@ -2413,6 +2414,10 @@ sudo chmod 666 /dev/uinput
 cp /opt/inttools/keys.gptk "$TMP_KEYS"
 sed -i 's/^x = .*/x = space/' "$TMP_KEYS"
 sed -i 's/^y = .*/y = space/' "$TMP_KEYS"
+if grep -q '^b = backspace' "$TMP_KEYS"; then
+    sed -i 's/^b = .*/b = esc/' "$TMP_KEYS"
+    sed -i 's/^a = .*/a = enter/' "$TMP_KEYS"
+fi
 start_gptkeyb
 
 # =======================================================
