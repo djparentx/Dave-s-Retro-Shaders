@@ -39,6 +39,7 @@ export TERM=linux
 GPTOKEYB_PID=""
 CURR_TTY="/dev/tty1"
 TMP_KEYS="/tmp/keys.gptk.$$"
+FLAG="/var/cache/.retro_shaders"
 SHADERPATH="/home/ark/.config/retroarch/shaders"
 CONFIGPATH="/home/ark/.config/retroarch/config"
 CONFIG32PATH="/home/ark/.config/retroarch32/config"
@@ -2402,7 +2403,7 @@ iVBORw0KGgoAAAANSUhEUgAABnAAAASKCAYAAABuEyBkAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
 EOF
 
 chown -R ark:ark /home/ark/.config/retroarch/overlay
-
+touch "$FLAG"
 sleep 2
 }
 
@@ -2434,7 +2435,7 @@ printf "\033[H\033[2J" > "$CURR_TTY"
 dialog --clear
 trap 'stop_gptkeyb; CleanupKeys; exit_menu' EXIT
 
-[[ ! -f "$SHADERPATH/gb-retro.glslp" ]] && create_files
+[[ ! -f "$FLAG" ]] && create_files
 
 main_menu
 
