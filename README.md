@@ -1,6 +1,6 @@
 # Dave's Retro Shaders (R36S)
 
-v1.3 by djparent
+v1.4 by djparent
 
 A RetroArch shader management tool for the R36S, designed for ArkOS and dArkOS, providing an easy, controller-friendly way to apply and manage curated shader presets per system.
 
@@ -16,11 +16,13 @@ It includes curated presets designed to enhance visuals while maintaining perfor
 
 ## Features
 
+- Bug Fix: 90's Monitor now being created properly
 - B button now functions as back button
 - Apply or remove shaders per system or globally
 - Two CRT styles:
   - 80’s Television (warm, curved)
   - 90’s Monitor (sharp, bright)
+  - setting is now persistent
 - Handheld LCD simulation shaders:
   - Motion blur
   - Subpixel layout
