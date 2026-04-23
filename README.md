@@ -32,6 +32,7 @@ It includes curated presets designed to enhance visuals while maintaining perfor
 - Automatic installation of required shader files
 - Legacy shader cleanup from older versions
 - Fully controller-driven interface (X / Y toggles)
+- delete flag file at /home/ark/.retro_shaders to reinstall files
 
 ---
 
