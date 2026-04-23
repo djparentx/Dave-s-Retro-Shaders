@@ -1209,6 +1209,14 @@ BGR = "0.000000"
 lighten_screen = "0.500000"
 EOF
 
+# --- Create CRT-Monitor shader file ---
+	cat > $SHADERPATH/monitor-retro.glslp << 'EOF'
+#reference "shaders_glsl/crt/crt-nobody.glslp"
+SCAN_SIZE = "0.900000"
+COLOR_BOOST = "1.000000"
+InputGamma = "2.500000"
+OutputGamma = "2.000000"
+EOF
 
 # --- Create CRT-TV shader file ---
 	cat > $SHADERPATH/crt-retro.glslp << 'EOF'
@@ -1216,7 +1224,6 @@ EOF
 beamlow = "0.650000"
 beamhigh = "0.600000"
 EOF
-
 
 # --- Create CRT-Consumer shader file ---
 	cat > $SHADERPATH/shaders_glsl/crt/crt-consumer.glslp << 'EOF'
