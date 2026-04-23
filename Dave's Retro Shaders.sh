@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # =======================================
-# Dave's Retro Shaders v1.3
+# Dave's Retro Shaders v1.4
 # by djparent
 # =======================================
 
@@ -39,7 +39,9 @@ export TERM=linux
 GPTOKEYB_PID=""
 CURR_TTY="/dev/tty1"
 TMP_KEYS="/tmp/keys.gptk.$$"
-FLAG="/var/cache/.retro_shaders"
+FLAG="/home/ark/.retro_shaders"
+TV_FLAG="/home/ark/.crt-retro"
+MON_FLAG="/home/ark/.monitor-retro"
 SHADERPATH="/home/ark/.config/retroarch/shaders"
 CONFIGPATH="/home/ark/.config/retroarch/config"
 CONFIG32PATH="/home/ark/.config/retroarch32/config"
@@ -976,7 +978,7 @@ apply_shaders_menu() {
 crt_style() {
     while true; do
 		
-		[[ -f "/var/cache/.monitor-retro" ]] && CRT="$T_90S" || CRT="$T_80S"
+		[[ -f "$MON_FLAG" ]] && CRT="$T_90S" || CRT="$T_80S"
         
 		local CHOICE
         CHOICE=$(dialog --clear \
@@ -996,15 +998,15 @@ crt_style() {
             1)	
 				CRT="$T_80S"
 				CRT_REF='#reference "../../shaders/crt-retro.glslp"'
-				touch /var/cache/.crt-retro
-				rm -f /var/cache/.monitor-retro
+				touch "$TV_FLAG"
+				rm -f "$MON_FLAG"
 				return
 				;;
             2) 	
 				CRT="$T_90S"
 				CRT_REF='#reference "../../shaders/monitor-retro.glslp"'
-				touch /var/cache/.monitor-retro
-				rm -f /var/cache/.crt-retro
+				touch "$MON_FLAG"
+				rm -f "$TV_FLAG"
 				return
 				;;
         esac
@@ -2436,7 +2438,7 @@ printf "\033[H\033[2J" > "$CURR_TTY"
 dialog --clear
 trap 'stop_gptkeyb; CleanupKeys; exit_menu' EXIT
 
-if [[ -f /var/cache/.monitor-retro ]]; then
+if [[ -f "$MON_FLAG" ]]; then
 	CRT="$T_90S"
 	CRT_REF='#reference "../../shaders/monitor-retro.glslp"'
 else
