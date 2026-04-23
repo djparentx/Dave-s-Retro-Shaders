@@ -267,43 +267,19 @@ printf "\033[H\033[2J" > "$CURR_TTY"
 printf "$T_STARTING" > "$CURR_TTY"
 sleep 0.5
 
-# ==============================================
-# CRT Style Chooser
-# ==============================================
-CRT="$T_80S"
-CRT_REF='#reference "../../shaders/crt-retro.glslp"'
+# ============================================================
+# Exit the script
+# ============================================================
+exit_menu() {
+	trap - EXIT
+    printf "\033[H\033[2J" > "$CURR_TTY"
+    printf "\e[?25h" > "$CURR_TTY"
+	stop_gptkeyb
+    if [[ ! -e "/dev/input/by-path/platform-odroidgo2-joypad-event-joystick" ]]; then
+        [ -n "$original_font" ] && setfont "$original_font"
+    fi
 
-television() {
-	CRT="$T_80S"
-	CRT_REF='#reference "../../shaders/crt-retro.glslp"'
-}
-
-monitor() {
-	CRT="$T_90S"
-	CRT_REF='#reference "../../shaders/monitor-retro.glslp"'
-}
-
-crt_style() {
-    while true; do
-        local CHOICE
-        CHOICE=$(dialog --clear \
-						--colors \
-						--cancel-label "$T_BACK" \
-						--backtitle "$T_BACKTITLE" \
-						--title "$T_CRT_STYLE" \
-						--menu "$T_CRT_STYLE: \Z4$CRT\Zn\n$T_SELECT" \
-						10 40 6 \
-						"1" "$T_80S" \
-						"2" "$T_90S" \
-						2>&1 > "$CURR_TTY")
-
-        [[ $? -ne 0 ]] && return
-
-        case "$CHOICE" in
-            1) television ;;
-            2) monitor ;;
-        esac
-    done
+    exit 0
 }
 
 # ==============================================
@@ -696,21 +672,6 @@ rm -f $CONFIGPATH/NeoCD/neogeocd.glslp
 }
 
 # ============================================================
-# Exit the script
-# ============================================================
-exit_menu() {
-	trap - EXIT
-    printf "\033[H\033[2J" > "$CURR_TTY"
-    printf "\e[?25h" > "$CURR_TTY"
-	stop_gptkeyb
-    if [[ ! -e "/dev/input/by-path/platform-odroidgo2-joypad-event-joystick" ]]; then
-        [ -n "$original_font" ] && setfont "$original_font"
-    fi
-
-    exit 0
-}
-
-# ============================================================
 # Remove All
 # ============================================================
 remove_all() {
@@ -1009,6 +970,46 @@ apply_shaders_menu() {
     done
 }
 
+# ==============================================
+# CRT Style Chooser
+# ==============================================
+crt_style() {
+    while true; do
+		
+		[[ -f "/var/cache/.monitor-retro" ]] && CRT="$T_90S" || CRT="$T_80S"
+        
+		local CHOICE
+        CHOICE=$(dialog --clear \
+						--colors \
+						--cancel-label "$T_BACK" \
+						--backtitle "$T_BACKTITLE" \
+						--title "$T_CRT_STYLE" \
+						--menu "$T_CRT_STYLE: \Z4$CRT\Zn\n$T_SELECT" \
+						10 40 6 \
+						"1" "$T_80S" \
+						"2" "$T_90S" \
+						2>&1 > "$CURR_TTY")
+
+        [[ $? -ne 0 ]] && return
+
+        case "$CHOICE" in
+            1)	
+				CRT="$T_80S"
+				CRT_REF='#reference "../../shaders/crt-retro.glslp"'
+				touch /var/cache/.crt-retro
+				rm -f /var/cache/.monitor-retro
+				return
+				;;
+            2) 	
+				CRT="$T_90S"
+				CRT_REF='#reference "../../shaders/monitor-retro.glslp"'
+				touch /var/cache/.monitor-retro
+				rm -f /var/cache/.crt-retro
+				return
+				;;
+        esac
+    done
+}
 
 # ============================================================
 # Main Menu
@@ -2434,6 +2435,14 @@ start_gptkeyb
 printf "\033[H\033[2J" > "$CURR_TTY"
 dialog --clear
 trap 'stop_gptkeyb; CleanupKeys; exit_menu' EXIT
+
+if [[ -f /var/cache/.monitor-retro ]]; then
+	CRT="$T_90S"
+	CRT_REF='#reference "../../shaders/monitor-retro.glslp"'
+else
+	CRT="$T_80S"
+	CRT_REF='#reference "../../shaders/crt-retro.glslp"'
+fi
 
 [[ ! -f "$FLAG" ]] && create_files
 
