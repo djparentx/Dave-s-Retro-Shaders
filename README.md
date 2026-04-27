@@ -28,6 +28,7 @@ It includes curated presets designed to enhance visuals while maintaining perfor
   - Subpixel layout
   - DMG palette (Game Boy)
 - Game Boy overlay with custom 4K bezel
+- Sets RetroArch Aspect Ratio to Core Provided
 - Multi-language support (EN, FR, ES, PT, IT, DE, PL)
 - Automatic installation of required shader files
 - Legacy shader cleanup from older versions
