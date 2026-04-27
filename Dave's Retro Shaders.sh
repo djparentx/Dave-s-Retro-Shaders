@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # =======================================
-# Dave's Retro Shaders v1.4
+# Dave's Retro Shaders v1.4.1
 # by djparent
 # =======================================
 
@@ -282,6 +282,18 @@ exit_menu() {
     fi
 
     exit 0
+}
+
+# ==============================================
+# Aspect Ratio set to Core provided
+# ==============================================
+set_ar() {
+grep -q '^aspect_ratio_index =' /home/ark/.config/retroarch/retroarch.cfg && \
+sed -i 's/^aspect_ratio_index = .*/aspect_ratio_index = "22"/' /home/ark/.config/retroarch/retroarch.cfg || \
+echo 'aspect_ratio_index = "22"' >> /home/ark/.config/retroarch/retroarch.cfg
+grep -q '^aspect_ratio_index =' /home/ark/.config/retroarch32/retroarch.cfg && \
+sed -i 's/^aspect_ratio_index = .*/aspect_ratio_index = "22"/' /home/ark/.config/retroarch32/retroarch.cfg || \
+echo 'aspect_ratio_index = "22"' >> /home/ark/.config/retroarch32/retroarch.cfg
 }
 
 # ==============================================
@@ -729,6 +741,7 @@ apply_all() {
 	create_pcenginecdglslp
 	create_neogeoglslp
 	create_neogeocdglslp
+	set_ar
 	
 	dialog --backtitle "$T_BACKTITLE" --title "$T_APPLY_ALL" --msgbox "\n $T_APPLIED" 7 40 > "$CURR_TTY"
 }
@@ -809,7 +822,9 @@ handheld_apply_menu() {
 			esac
 		fi
 	done
-
+	
+	[[ -n "$CHOICES" ]] && set_ar
+	
 	dialog --backtitle "$T_BACKTITLE" --title "$T_HHTITLE" --msgbox "\n $T_APPLIED" 7 40 > "$CURR_TTY"
 }
 
@@ -913,7 +928,9 @@ console_apply_menu() {
 				14) create_neogeocdglslp ;;
 			esac
 		fi
-	done		
+	done
+	
+	[[ -n "$CHOICES" ]] && set_ar
 
 	dialog --backtitle "$T_BACKTITLE" --title "$T_CONTITLE" --msgbox "\n $T_APPLIED" 7 40 > "$CURR_TTY"
 }
