@@ -1,0 +1,5 @@
+#reference "shaders_glsl/crt/crt-nobody.glslp"
+SCAN_SIZE = "0.900000"
+COLOR_BOOST = "1.000000"
+InputGamma = "2.500000"
+OutputGamma = "2.000000"

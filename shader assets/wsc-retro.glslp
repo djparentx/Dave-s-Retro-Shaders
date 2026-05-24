@@ -1,0 +1,6 @@
+#reference "gbc.glslp"
+gain = "1.000000"
+blacklevel = "0.100000"
+ambient = "0.020000"
+BGR = "0.000000"
+lighten_screen = "0.500000"

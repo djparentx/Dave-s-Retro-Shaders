@@ -1,0 +1,7 @@
+#reference "shaders_glsl/handheld/lcd-grid-v2-motionblur.glslp"
+response_time = "0.111000"
+gain = "1.250000"
+gamma = "2.400000"
+outgamma = "1.800000"
+blacklevel = "0.100000"
+ambient = "0.020000"
