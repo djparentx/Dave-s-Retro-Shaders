@@ -51,10 +51,10 @@ It includes curated presets designed to enhance visuals while maintaining perfor
   LCD grid shader + BGR pixels + motion blur  
 
 - NeoGeo Pocket  
-  LCD grid shader + motion blur  
+  Overlay + motion blur  
 
 - NeoGeo Pocket Color  
-  LCD grid shader + subpixel color + motion blur  
+  Overlay + motion blur  
 
 - WonderSwan Color  
   LCD grid shader + GBC color  
