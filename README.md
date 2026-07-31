@@ -1,4 +1,4 @@
-# Dave's Retro Shaders (R36S)
+# Dave's Retro Shaders 2.0
 
 A RetroArch shader management tool for the R36S, designed for ArkOS and dArkOS, providing an easy, controller-friendly way to apply and manage curated shader presets per system. These shaders are custom lightweight versions of shaders already found in Retroarch. They have been modified for performance on the rk3326 platform.
 
@@ -187,5 +187,21 @@ On first launch, the script will:
 ## Credits
 
 - Created by djparent  
+
+---
+
+<img width="1280" height="960" alt="gb_grid" src="https://github.com/user-attachments/assets/20674cab-9db1-456e-b291-e112acfee2d3" />
+
+---
+
+<img width="1280" height="960" alt="gbc_grid" src="https://github.com/user-attachments/assets/7f4d2948-d07a-4df1-bb0e-2f8adda91c6e" />
+
+---
+
+<img width="1280" height="960" alt="gba_grid" src="https://github.com/user-attachments/assets/6d9781d8-550b-4451-9c1e-0f205a3be654" />
+
+---
+
+<img width="1280" height="960" alt="ngpc_grid" src="https://github.com/user-attachments/assets/05050f78-8c12-4126-919e-92d23610a4f6" />
 
 ---
