@@ -1,6 +1,6 @@
 # Dave's Retro Shaders (R36S)
 
-A RetroArch shader management tool for the R36S, designed for ArkOS and dArkOS, providing an easy, controller-friendly way to apply and manage curated shader presets per system.
+A RetroArch shader management tool for the R36S, designed for ArkOS and dArkOS, providing an easy, controller-friendly way to apply and manage curated shader presets per system. These shaders are custom lightweight versions of shaders already found in Retroarch. They have been modified for performance on the rk3326 platform.
 
 ---
 
@@ -15,57 +15,56 @@ It includes curated presets designed to enhance visuals while maintaining perfor
 ## Features
 
 - Sets necessary RetroArch settings
-- B button now functions as back button
 - Apply or remove shaders per system or globally
+- Use X or Y to toggle systems
 - Two CRT styles:
   - 80’s Television (warm, curved)
   - 90’s Monitor (sharp, bright)
-  - setting is now persistent
+  - setting is persistent
 - Handheld LCD simulation shaders:
   - Motion blur
   - Subpixel layout
-  - DMG palette (Game Boy)
-- Game Boy bezel overlays
+  - BGR pixel simulation
+- Game Boy, Gameboy Color, Gameboy Advance, NGP, and NGPC bezel overlays
 - Sets RetroArch Aspect Ratio to Core Provided
 - Multi-language support (EN, FR, ES, PT, IT, DE, PL)
-- Automatic installation of required shader files
+- Automatic installation of custom shader files
 - Legacy shader cleanup from older versions
-- Fully controller-driven interface (X / Y toggles)
-- delete flag file at /home/ark/.retro_shaders to reinstall files
+- delete flag file at /home/ark/.retro_shaders_* to reinstall files
 
 ---
 
-## Supported Systems
+## Applied Shaders/Overlays
 
 ### Handhelds
 
 - Nintendo Game Boy  
-  DMG palette + LCD grid + motion blur  
+  Overlay + DMG palette + motion blur  
 
 - Nintendo Game Boy Color  
-  LCD grid + subpixel color + motion blur  
+  Overlay + GBC color + motion blur  
 
 - Nintendo Game Boy Advance  
-  LCD grid + color correction + motion blur  
+  Overlay + GBA color + motion blur  
 
 - SEGA Game Gear  
-  LCD grid + color correction + motion blur  
+  LCD grid shader + BGR pixels + motion blur  
 
 - NeoGeo Pocket  
-  LCD grid + motion blur  
+  LCD grid shader + motion blur  
 
 - NeoGeo Pocket Color  
-  LCD grid + subpixel color + motion blur  
+  LCD grid shader + subpixel color + motion blur  
 
 - WonderSwan Color  
-  LCD grid + color correction  
+  LCD grid shader + GBC color  
 
 - Atari Lynx  
-  LCD grid + color correction + motion blur  
+  LCD grid + BGR Pixel + GBC color + motion blur  
 
 ---
 
-### Consoles (CRT Styles)
+### Consoles (CRT)
 
 - Arcade / MAME  
 - Atari 2600 / 5200 / 7800  
@@ -127,14 +126,13 @@ On first launch, the script will:
 
     ~/.config/retroarch/shaders/
 
-  - Build full CRT pipeline:
-    - convergence  
-    - linearize  
-    - glow (X/Y)  
-    - CRT-consumer  
-
-  - Create Game Boy overlay:
-    - Config file + PNG bezel  
+  - Install shaders to:
+    
+    ~/.config/retroarch/shaders/shadersglsl/
+    
+  - Install overlays to:
+    
+    ~/.config/retroarch/overlay/
 
   - Remove legacy shader files  
   - Set correct file ownership  
@@ -161,7 +159,7 @@ On first launch, the script will:
 
 ### CRT Style Handling
 
-- Style is selected before applying console shaders  
+- Style is selected *before* applying console shaders  
 - Reapplying updates all configs to match selected style  
 
 ---
@@ -176,42 +174,13 @@ On first launch, the script will:
 
 ## Requirements
 
-- R36S running ArkOS or dArkOS  
+- 4:3 screen ratio
+- R36S or variant running ArkOS or dArkOS  
 - RetroArch (standard install paths)  
-
-Required tools:
-
-- dialog  
-- gptokeyb  
-- setfont  
 
 ---
 
 ## File Locations
-
-Shader presets:
-
-~/.config/retroarch/shaders/
-
-Core shader configs:
-
-~/.config/retroarch/config/<CoreName>/
-
-32-bit core configs:
-
-~/.config/retroarch32/config/<CoreName>/
-
-Game Boy overlay:
-
-~/.config/retroarch/overlay/
-
----
-
-## Notes
-
-- Optimized specifically for R36S hardware  
-- Designed for performance-balanced visuals on RK3326  
-- Safe to re-run without breaking existing configs  
 
 ---
 
