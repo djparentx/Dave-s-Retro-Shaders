@@ -9,16 +9,16 @@ A RetroArch shader management tool for the R36S, designed for ArkOS and dArkOS, 
 ## Screenshots
 
 <p align="center">
-  <img width="1024" height="768" alt="crt80" src="https://github.com/user-attachments/assets/b56f0676-9d7a-40d1-89a0-216ad908d948" />
-  <img width="1024" height="768" alt="crt90" src="https://github.com/user-attachments/assets/59260240-5ee4-41b3-a2a5-dcc39b6bfbf9" />
-  <img width="1024" height="768" alt="gameboy" src="https://github.com/user-attachments/assets/9c6689ea-28b9-49c4-b88c-920936b11700" />
-  <img width="1024" height="768" alt="gbc" src="https://github.com/user-attachments/assets/16844231-a83a-457b-b1ac-554591a0170b" />
-  <img width="1024" height="768" alt="gba" src="https://github.com/user-attachments/assets/405e8450-4f2b-4f9d-ae84-fe59e1c48d2f" />
-  <img width="1024" height="768" alt="gamegear" src="https://github.com/user-attachments/assets/c8fbb59e-7387-4cce-8784-0d7e8b062e38" />
-  <img width="1024" height="768" alt="lynx" src="https://github.com/user-attachments/assets/3d087ddc-d71a-4f3e-a019-8f0359a102c6" />
-  <img width="1024" height="768" alt="ngp" src="https://github.com/user-attachments/assets/f77f5e20-9507-48f0-bbad-c430f77ff4df" />
-  <img width="1024" height="768" alt="ngpc" src="https://github.com/user-attachments/assets/5f1d71f5-bdfa-4a1f-b680-c7faeecc92d6" />
-  <img width="1024" height="768" alt="wsc" src="https://github.com/user-attachments/assets/4c0a0884-ef57-4178-b2a2-68b03b468774" />
+  <img width="320" height="240" alt="crt80" src="https://github.com/user-attachments/assets/b56f0676-9d7a-40d1-89a0-216ad908d948" />
+  <img width="320" height="240" alt="crt90" src="https://github.com/user-attachments/assets/59260240-5ee4-41b3-a2a5-dcc39b6bfbf9" />
+  <img width="320" height="240" alt="gameboy" src="https://github.com/user-attachments/assets/9c6689ea-28b9-49c4-b88c-920936b11700" />
+  <img width="320" height="240" alt="gbc" src="https://github.com/user-attachments/assets/16844231-a83a-457b-b1ac-554591a0170b" />
+  <img width="320" height="240" alt="gba" src="https://github.com/user-attachments/assets/405e8450-4f2b-4f9d-ae84-fe59e1c48d2f" />
+  <img width="320" height="240" alt="gamegear" src="https://github.com/user-attachments/assets/c8fbb59e-7387-4cce-8784-0d7e8b062e38" />
+  <img width="320" height="240" alt="lynx" src="https://github.com/user-attachments/assets/3d087ddc-d71a-4f3e-a019-8f0359a102c6" />
+  <img width="320" height="240" alt="ngp" src="https://github.com/user-attachments/assets/f77f5e20-9507-48f0-bbad-c430f77ff4df" />
+  <img width="320" height="240" alt="ngpc" src="https://github.com/user-attachments/assets/5f1d71f5-bdfa-4a1f-b680-c7faeecc92d6" />
+  <img width="320" height="240" alt="wsc" src="https://github.com/user-attachments/assets/4c0a0884-ef57-4178-b2a2-68b03b468774" />
 </p>
 
 ## Overview
