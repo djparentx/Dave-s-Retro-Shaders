@@ -18,7 +18,7 @@ A RetroArch shader management tool for the R36S, designed for ArkOS and dArkOS, 
   <img width="320" height="240" alt="lynx" src="https://github.com/user-attachments/assets/3d087ddc-d71a-4f3e-a019-8f0359a102c6" />
   <img width="320" height="240" alt="ngp" src="https://github.com/user-attachments/assets/f77f5e20-9507-48f0-bbad-c430f77ff4df" />
   <img width="320" height="240" alt="ngpc" src="https://github.com/user-attachments/assets/5f1d71f5-bdfa-4a1f-b680-c7faeecc92d6" />
-  <img width="320" height="240" alt="wsc" src="https://github.com/user-attachments/assets/4c0a0884-ef57-4178-b2a2-68b03b468774" />
+  <img width="320" height="240" alt="wsc" src="https://github.com/user-attachments/assets/9eae48fd-3658-4ac2-be20-470e45496f5b" />
 </p>
 
 ## Overview
