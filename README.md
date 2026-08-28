@@ -6,6 +6,21 @@ A RetroArch shader management tool for the R36S, designed for ArkOS and dArkOS, 
 
 ---
 
+## Screenshots
+
+<p align="center">
+  <img width="1024" height="768" alt="crt80" src="https://github.com/user-attachments/assets/b56f0676-9d7a-40d1-89a0-216ad908d948" />
+  <img width="1024" height="768" alt="crt90" src="https://github.com/user-attachments/assets/59260240-5ee4-41b3-a2a5-dcc39b6bfbf9" />
+  <img width="1024" height="768" alt="gameboy" src="https://github.com/user-attachments/assets/9c6689ea-28b9-49c4-b88c-920936b11700" />
+  <img width="1024" height="768" alt="gbc" src="https://github.com/user-attachments/assets/16844231-a83a-457b-b1ac-554591a0170b" />
+  <img width="1024" height="768" alt="gba" src="https://github.com/user-attachments/assets/405e8450-4f2b-4f9d-ae84-fe59e1c48d2f" />
+  <img width="1024" height="768" alt="gamegear" src="https://github.com/user-attachments/assets/c8fbb59e-7387-4cce-8784-0d7e8b062e38" />
+  <img width="1024" height="768" alt="lynx" src="https://github.com/user-attachments/assets/3d087ddc-d71a-4f3e-a019-8f0359a102c6" />
+  <img width="1024" height="768" alt="ngp" src="https://github.com/user-attachments/assets/f77f5e20-9507-48f0-bbad-c430f77ff4df" />
+  <img width="1024" height="768" alt="ngpc" src="https://github.com/user-attachments/assets/5f1d71f5-bdfa-4a1f-b680-c7faeecc92d6" />
+  <img width="1024" height="768" alt="wsc" src="https://github.com/user-attachments/assets/4c0a0884-ef57-4178-b2a2-68b03b468774" />
+</p>
+
 ## Overview
 
 This script simplifies shader management on the R36S by eliminating manual configuration and providing a clean menu interface to apply or remove shaders across supported systems.
@@ -189,21 +204,5 @@ On first launch, the script will:
 ## Credits
 
 - Created by djparent  
-
----
-
-<img width="1280" height="960" alt="gb_grid" src="https://github.com/user-attachments/assets/20674cab-9db1-456e-b291-e112acfee2d3" />
-
----
-
-<img width="1280" height="960" alt="gbc_grid" src="https://github.com/user-attachments/assets/7f4d2948-d07a-4df1-bb0e-2f8adda91c6e" />
-
----
-
-<img width="1280" height="960" alt="gba_grid" src="https://github.com/user-attachments/assets/6d9781d8-550b-4451-9c1e-0f205a3be654" />
-
----
-
-<img width="1280" height="960" alt="ngpc_grid" src="https://github.com/user-attachments/assets/05050f78-8c12-4126-919e-92d23610a4f6" />
 
 ---
