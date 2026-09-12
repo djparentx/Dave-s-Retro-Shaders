@@ -1,3 +1,0 @@
-#reference "shaders_glsl/crt/crt-consumer.glslp"
-beamlow = "0.650000"
-beamhigh = "0.600000"
