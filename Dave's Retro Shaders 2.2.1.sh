@@ -4,6 +4,7 @@
 # Dave's Retro Shaders v2.2.1
 # by djparent
 # =======================================
+VERSION="2.2.1"
 
 # Copyright (c) 2026 djparent
 #
@@ -69,7 +70,7 @@ fi
 # -------------------------------------------------------
 # Default configuration : EN
 # -------------------------------------------------------
-T_BACKTITLE="Dave's Retro Shaders by djparent"
+T_BACKTITLE="Dave's Retro Shaders ${VERSION} by djparent"
 T_MAINTITLE="Main Menu"
 T_HHTITLE="Handhelds"
 T_CONTITLE="Consoles"
@@ -92,10 +93,12 @@ T_90S="90's monitor"
 T_EXIT="Exit"
 T_BACK="Back"
 T_NOTHING="Nothing was selected."
+T_UPDATE_AVAILABLE="Update Available"
+T_DOWNLOAD="Download Update Now?"
 
 # --- FRANÇAIS (FR) --- 
 if [[ "$SYSTEM_LANG" == *"fr"* ]]; then
-T_BACKTITLE="Dave s Retro Shaders par djparent"
+T_BACKTITLE="Dave s Retro Shaders ${VERSION} par djparent"
 T_MAINTITLE="Menu principal"
 T_HHTITLE="Portables"
 T_CONTITLE="Consoles"
@@ -118,10 +121,12 @@ T_90S="Moniteur des annees 90"
 T_EXIT="Quitter"
 T_BACK="Retour"
 T_NOTHING="Rien n a ete selectionne."
+T_UPDATE_AVAILABLE="Mise a jour disponible"
+T_DOWNLOAD="Telecharger la mise a jour maintenant ?"
 
 # --- ESPAÑOL (ES) ---
 elif [[ "$SYSTEM_LANG" == *"es"* ]]; then
-T_BACKTITLE="Dave s Retro Shaders por djparent"
+T_BACKTITLE="Dave s Retro Shaders ${VERSION} por djparent"
 T_MAINTITLE="Menu principal"
 T_HHTITLE="Portatiles"
 T_CONTITLE="Consolas"
@@ -144,10 +149,12 @@ T_90S="Monitor de los anos 90"
 T_EXIT="Salir"
 T_BACK="Atras"
 T_NOTHING="No se selecciono nada."
+T_UPDATE_AVAILABLE="Actualizacion disponible"
+T_DOWNLOAD="Descargar actualizacion ahora?"
 
 # --- PORTUGUÊS (PT) ---
 elif [[ "$SYSTEM_LANG" == *"pt"* ]]; then
-T_BACKTITLE="Dave s Retro Shaders por djparent"
+T_BACKTITLE="Dave s Retro Shaders ${VERSION} por djparent"
 T_MAINTITLE="Menu principal"
 T_HHTITLE="Portateis"
 T_CONTITLE="Consolas"
@@ -170,10 +177,12 @@ T_90S="Monitor dos anos 90"
 T_EXIT="Sair"
 T_BACK="Voltar"
 T_NOTHING="Nada foi selecionado."
+T_UPDATE_AVAILABLE="Atualizacao disponivel"
+T_DOWNLOAD="Baixar atualizacao agora?"
 
 # --- ITALIANO (IT) ---
 elif [[ "$SYSTEM_LANG" == *"it"* ]]; then
-T_BACKTITLE="Dave s Retro Shaders di djparent"
+T_BACKTITLE="Dave s Retro Shaders ${VERSION} di djparent"
 T_MAINTITLE="Menu principale"
 T_HHTITLE="Portatili"
 T_CONTITLE="Console"
@@ -196,10 +205,12 @@ T_90S="Monitor anni 90"
 T_EXIT="Esci"
 T_BACK="Indietro"
 T_NOTHING="Nessuna selezione effettuata."
+T_UPDATE_AVAILABLE="Aggiornamento disponibile"
+T_DOWNLOAD="Scaricare aggiornamento ora?"
 
 # --- DEUTSCH (DE) ---
 elif [[ "$SYSTEM_LANG" == *"de"* ]]; then
-T_BACKTITLE="Dave s Retro Shaders von djparent"
+T_BACKTITLE="Dave s Retro Shaders ${VERSION} von djparent"
 T_MAINTITLE="Hauptmenu"
 T_HHTITLE="Handhelds"
 T_CONTITLE="Konsolen"
@@ -222,10 +233,12 @@ T_90S="Monitor der 90er Jahre"
 T_EXIT="Beenden"
 T_BACK="Zuruck"
 T_NOTHING="Nichts wurde ausgewaehlt."
+T_UPDATE_AVAILABLE="Update verfuegbar"
+T_DOWNLOAD="Update jetzt herunterladen?"
 
 # --- POLSKI (PL) ---
 elif [[ "$SYSTEM_LANG" == *"pl"* ]]; then
-T_BACKTITLE="Dave s Retro Shaders przez djparent"
+T_BACKTITLE="Dave s Retro Shaders ${VERSION} przez djparent"
 T_MAINTITLE="Menu glowne"
 T_HHTITLE="Urzadzenia przenosne"
 T_CONTITLE="Konsole"
@@ -248,6 +261,8 @@ T_90S="Monitor z lat 90"
 T_EXIT="Wyjscie"
 T_BACK="Wstecz"
 T_NOTHING="Nic nie zostalo wybrane."
+T_UPDATE_AVAILABLE="Dostepna aktualizacja"
+T_DOWNLOAD="Pobrac aktualizacje teraz?"
 fi
 
 # ============================================================
@@ -289,6 +304,65 @@ pgrep -f osk.py | xargs kill -9
 printf "\033[H\033[2J" > "$CURR_TTY"
 printf "$T_STARTING" > "$CURR_TTY"
 sleep 0.5
+
+
+# ============================================================
+# Check for Updates
+# ============================================================
+Self_Update() {
+    local repo="djparentx/Dave-s-Retro-Shaders"
+    local latest url
+
+    read -r latest url < <(curl -s https://api.github.com/repos/${repo}/releases/latest \
+    | python3 -c "import sys,json; d=json.load(sys.stdin); print(d['tag_name'].lstrip('v'), d['assets'][0]['browser_download_url'])")
+
+    [[ -z "$latest" ]] && return  # no internet / API fail, skip silently
+
+    [[ "$latest" == "$VERSION" ]] && return
+	dialog \
+		--clear \
+		--backtitle "$T_BACKTITLE" \
+		--title "$latest $T_UPDATE_AVAILABLE" \
+		--yesno "\n  $T_DOWNLOAD" \
+		7 45 > "$CURR_TTY" 2>&1
+			
+	if [[ $? != 0 ]]; then
+		return
+	fi
+	
+	touch /home/ark/.retroshaders_show_changelog
+	local new_path="${0%/*}/Dave's Retro Shaders ${latest}.sh"
+	curl -L "$url" -o "$new_path" && chmod +x "$new_path"
+	[[ "$0" != "$new_path" ]] && rm -f "$0"
+	exec "$new_path"
+}
+
+# ============================================================
+# Change Log
+# ============================================================
+Change_Log() {
+	dialog \
+		--backtitle "$T_BACKTITLE" \
+		--title "Dave's Retro Shaders v${VERSION} Change Log" \
+		--clear \
+		--colors \
+		--no-collapse \
+		--msgbox "\n\
+      \Z4https://github.com/djparentx\Zn\n\
+          --------------------\n\
+   ◦ fixed PC Engine aspect ratio\n\
+   ◦ fixed PSX settings not applying\n\
+   ◦ fixed bezels not being removed\n\
+   ◦ added self-updating!\n\
+ 	" \
+		14 45 > "$CURR_TTY"
+		
+	[ $? -ne 0 ] && return
+	
+	rm -f /home/ark/.retroshaders_show_changelog
+}
+
+
 
 # ============================================================
 # Exit the script
@@ -3497,8 +3571,11 @@ rm -f "$OLD_FLAG"
 rm -f /home/ark/.monitor-retro
 rm -f $SHADERPATH/monitor-retro.glslp 
 
-
 [[ ! -f "$FLAG" ]] && create_files
+
+Self_Update
+
+[[ -f "/home/ark/.retroshaders_show_changelog" ]] && Change_Log
 
 main_menu
 
